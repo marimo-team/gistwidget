@@ -1,6 +1,6 @@
 [project]
 name = "gistwidget"
-version = "0.1.1"
+version = "0.1.2"
 description = "Share anywidgets via GitHub Gists"
 readme = "README.md"
 requires-python = ">=3.13"
