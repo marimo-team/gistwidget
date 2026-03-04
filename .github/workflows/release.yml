@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  push:
+    tags: [v*]
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+      - run: uv build
+      - run: uv run --isolated --no-project --with dist/*.whl tests/smoke_test.py
+      - run: uv run --isolated --no-project --with dist/*.tar.gz tests/smoke_test.py
+      - run: uv publish
