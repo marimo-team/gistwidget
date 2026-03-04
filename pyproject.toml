@@ -1,0 +1,13 @@
+[project]
+name = "gistwidget"
+version = "0.1.0"
+description = "Share anywidgets via GitHub Gists"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = ["anywidget", "traitlets"]
+
+[dependency-groups]
+dev = ["pytest", "marimo"]
+
+[tool.setuptools.packages.find]
+include = ["gistwidget*"]
