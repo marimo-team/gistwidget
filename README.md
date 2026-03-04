@@ -1,5 +1,7 @@
 # gistwidget
 
+[![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/marimo-team/gistwidget/blob/main/notebooks/wasm.py/wasm)
+
 > **Labs** — This is an experimental project. And not recommended for production use.
 
 Share [anywidgets](https://anywidget.dev) via GitHub Gists. Two functions, zero config.
