@@ -12,8 +12,8 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
       - run: uv build
       - run: uv run --isolated --no-project --with dist/*.whl tests/smoke_test.py
       - run: uv run --isolated --no-project --with dist/*.tar.gz tests/smoke_test.py
