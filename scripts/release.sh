@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
-BUMP="${1:-patch}"
-uv version --bump "$BUMP"
-VERSION="v$(uv version | awk '{print $2}')"
-
-git add pyproject.toml uv.lock
-git commit -m "$VERSION"
-git tag "$VERSION"
-git push origin main "$VERSION"
-
-echo "Released $VERSION"
+if [[ "$#" != 1 || "$1" == -h || "$1" == --help ]]; then
+  printf 'Usage: %s <patch|minor|major|X.Y.Z>\n' "$0" >&2
+  exit 2
+fi
+if [[ ! "$1" =~ ^(patch|minor|major|(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*))$ ]]; then
+  printf 'Expected patch, minor, major, or a stable X.Y.Z version.\n' >&2
+  exit 2
+fi
+exec gh workflow run release-pr.yml --repo marimo-team/gistwidget --ref main -f "version=$1"
